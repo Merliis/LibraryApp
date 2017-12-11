@@ -10,5 +10,5 @@ namespace LibraryApp.Models
     {
         public DbSet<Book> Books { get; set; }
         public DbSet<Booking> Booking { get; set; }
-    }
+    } 
 }

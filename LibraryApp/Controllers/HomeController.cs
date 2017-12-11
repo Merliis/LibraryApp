@@ -12,19 +12,34 @@ namespace LibraryApp.Controllers
         BookContext db = new BookContext();
         public ActionResult Index()
         {
+            var books = db.Books;
+            ViewBag.Books = books;
             return View(db.Books);
         }
-
+        [HttpGet]
+        public ActionResult BookBookings(int id)
+        {
+            ViewBag.BookId = id;
+            return View();
+        }
+        [HttpPost]
+        public string BookBookings(Booking booking)
+        {
+            booking.Date = DateTime.Now;
+            db.Booking.Add(booking);
+            db.SaveChanges();
+            return "Спасибо," + booking.User + ", выбранная книга забронирована для получения";
+        }
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = " ";
 
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = " ";
 
             return View();
         }

@@ -7,9 +7,10 @@ namespace LibraryApp.Models
 {
     public class Booking
     {
-        public int BookId { get; set; }           //порядковый номер книги
-        public int BookingId { get; set; }      //номер брони
-        public string User { get; set; }          //пользователь
+        public int BookId { get; set; }            //порядковый номер книги
+        public int BookingId { get; set; }         //номер брони
+        public string User { get; set; }           //пользователь
         public DateTime Date { get; set; }        //дата
+        public string Address { get; set; }       //адрес
     }
 }

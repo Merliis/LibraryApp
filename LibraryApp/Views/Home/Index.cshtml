@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div>
-    <h3>Библиотека</h3>
+    <h3> </h3>
     <table>
         <tr class="header">
             <td><p>Название книги</p></td>
@@ -12,14 +12,15 @@
             <td><p>Количество</p></td>
             <td></td>
         </tr>
-        @foreach(LibraryApp.Models.Book b in Model)
+        <!-- foreach(LibraryApp.Models.Book b in Model) -->
+        @foreach(var b in ViewBag.Books)
         {
-            <tr>
-                <td><p>@b.Name</p></td>
-                <td><p>@b.Author</p></td>
-                <td><p>@b.Quantity</p></td>
-                <td><p><a href="/Home/Booking/@b.(Id)">Забронировать</a></p></td>
-            </tr>
+        <tr>
+            <td><p>@b.Name</p></td>
+            <td><p>@b.Author</p></td>
+            <td><p>@b.Quantity</p></td>
+            <td><p><a href="/Home/BookBookings/@b.Id">Забронировать</a></p></td>
+        </tr>
         }
     </table>
 </div>
