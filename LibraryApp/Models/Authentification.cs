@@ -9,19 +9,18 @@ namespace FormsAuthApp.Models
     public class LoginModel
     {
         [Required]
-        public string Login { get; set; }
+        public string Email { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
         public string Password { get; set; }
         public string UserName { get; internal set; }
-        public string Email { get; internal set; }
     }
 
     public class RegistrationModel
     {
         [Required]
-        public string Login { get; set; }
+        public string Email { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
@@ -32,9 +31,6 @@ namespace FormsAuthApp.Models
         [Compare("Password", ErrorMessage = "Пароли не совпадают")]
         public string ConfirmPassword { get; set; }
 
-        [Required]
-        public string Name { get; set; }
-        public string Email { get; internal set; }
         public string UserName { get; internal set; }
     }
 }

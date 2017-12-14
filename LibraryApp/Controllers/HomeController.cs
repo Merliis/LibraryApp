@@ -16,12 +16,14 @@ namespace LibraryApp.Controllers
             ViewBag.Books = books;
             return View(db.Books);
         }
+        [Authorize]
         [HttpGet]
         public ActionResult BookBookings(int id)
         {
             ViewBag.BookId = id;
             return View();
         }
+        [Authorize]
         [HttpPost]
         public string BookBookings(Booking booking)
         {
@@ -30,16 +32,13 @@ namespace LibraryApp.Controllers
             db.SaveChanges();
             return "Спасибо," + booking.User + ", выбранная книга забронирована для получения";
         }
-        public ActionResult About()
+        public ActionResult Information()
         {
-            ViewBag.Message = " ";
-
             return View();
         }
-
+        [Authorize]
         public ActionResult Contact()
         {
-            ViewBag.Message = " ";
 
             return View();
         }

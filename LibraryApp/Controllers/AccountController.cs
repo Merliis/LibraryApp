@@ -18,12 +18,11 @@ namespace LibraryApp.Controllers
     }
 
     [HttpPost]
-    [ValidateAntiForgeryToken]
     public ActionResult Login(LoginModel model)
     {
         if (ModelState.IsValid)
         {
-            // ищем пользователя в базе данных
+            //поиск пользователя в базе данных
             User user = null;
             using (UserContext db = new UserContext())
             {
@@ -49,7 +48,6 @@ namespace LibraryApp.Controllers
         return View();
     }
     [HttpPost]
-    [ValidateAntiForgeryToken]
     public ActionResult Registration(RegistrationModel model)
     {
         if (ModelState.IsValid)
@@ -64,7 +62,7 @@ namespace LibraryApp.Controllers
                 //создание нового пользователя
                 using (UserContext db = new UserContext())
                 {
-                    db.Users.Add(new User { Email = model.Email, Password = model.Password, Name = model.UserName });
+                    db.Users.Add(new User { Email = model.Email, Password = model.Password, Name = model.UserName, RoleId = 1});
                     db.SaveChanges();
 
                     user = db.Users.Where(u => u.Email == model.Email && u.Password == model.Password).FirstOrDefault();
@@ -72,7 +70,7 @@ namespace LibraryApp.Controllers
                 //успешное добавление пользователя в бд
                 if (user != null)
                 {
-                    FormsAuthentication.SetAuthCookie(model.Email, true);
+                    FormsAuthentication.SetAuthCookie(model.Email, false);
                     return RedirectToAction("Index", "Home");
                 }
             }

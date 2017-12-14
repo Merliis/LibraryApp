@@ -11,7 +11,12 @@ namespace LibraryApp.Models
         public string Password { get; set; }    //пароль
         public string Email { get; set; }       //почта и логин
         public string Name { get; set; }    //имя
-        public int Role { get; set; }        //роль  0-гость, 1-читатель, 2-библиотекарь, 3-администратор
+        public int RoleId { get; set; }        //роль  0-гость, 1-авторизованный пользователь, 2-библиотекарь, 3-администратор
+        public Role Role { get; set; }
     }
-   
+   public class Role
+    {
+        public int Id;
+        public string Name;
+    }
 }
